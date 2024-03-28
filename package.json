@@ -1,22 +1,22 @@
 {
-  "name": "@easterneas/fastify-sequelize",
-  "version": "1.1.1",
-  "description": "A plugin for Fastify to integrate Sequelize into your project. Supports Sequelize 6 and can play along nicely with `sequelize-cli`.",
+  "name": "@ysterbal/fastify-sequelize",
+  "version": "1.0.0",
+  "description": "A plugin for Fastify to integrate Sequelize into your project. Supports Sequelize 6 (ESM model loading) and can play along nicely with `sequelize-cli`.",
   "main": "index.js",
   "scripts": {
     "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/easterneas/fastify-sequelize.git"
+    "url": "git+https://github.com/ysterbal/fastify-sequelize.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/easterneas/fastify-sequelize/issues"
+    "url": "https://github.com/ysterbal/fastify-sequelize/issues"
   },
-  "homepage": "https://github.com/easterneas/fastify-sequelize#readme",
+  "homepage": "https://github.com/ysterbal/fastify-sequelize#readme",
   "dependencies": {
     "fastify-plugin": "^3.0.0"
   },

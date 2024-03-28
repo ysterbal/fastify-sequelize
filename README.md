@@ -1,5 +1,7 @@
 # fastify-sequelize
 
+
+
 This is a plugin for Fastify to integrate Sequelize deeply into your project.
 Supports Sequelize up to version 6 and can play along nicely with `sequelize-cli`.
 
@@ -7,20 +9,16 @@ Supports Sequelize up to version 6 and can play along nicely with `sequelize-cli
 model file. By doing so, it will be imported immediately, making generated
 Sequelize models ready to use.
 
-## Why the fuss?
-
-I think integrating directly into `fastify` instance is better (and cleaner, in
-my opinion). And by doing so, handling routes will eliminate the need to
-import `models` directory manually to each route handlers (or controllers).
+Kudo's to @easterneas for starting this project all credit go to them.
 
 ## Installation
 
 1. Install via:
-   - NPM: `npm i @easterneas/fastify-sequelize`, or
-   - Yarn: `yarn add @easterneas/fastify-sequelize`
+   - NPM: `npm i @ysterbal/fastify-sequelize`, or
+   - Yarn: `yarn add @ysterbal/fastify-sequelize`
 2. Register this plugin:
    ```js
-     fastify.register(require('@easterneas/fastify-sequelize'), options)
+     fastify.register(require('@ysterbal/fastify-sequelize'), options)
    ```
    where `options` contains your Sequelize configuration.
 3. There is no step 3, by now you can use it through `this.models` (or
@@ -33,7 +31,7 @@ Let me show you how.
 
 I will assume that your Sequelize configuration file is in a default location,
 created through `sequelize-cli` package.
-#### If you have Fastify project made with `fastify-cli`
+#### If you have Fastify project made with `fastify-cli` using CJS modules
 
 ```js
 const fp = require('fastify-plugin')
@@ -43,12 +41,32 @@ module.exports = fp(async function (fastify, opts) {
   fastify.register(require('@easterneas/fastify-sequelize', config))
 })
 ```
+#### If you have Fastify project made with `fastify-cli` using ESM modules
+
+```js
+import fp from 'fastify-plugin'
+import sequelize from '@ysterbal/fastify-sequelize'
+
+/**
+ * This plugins adds some utilities to handle sequelize ORM models
+ *
+ * @see https://github.com/ysterbal/fastify-sequelize
+ */
+export default fp(async (fastify) => {
+    const config = {development:{
+      modelsPath: './models',
+      name: 'models',
+    }}
+    fastify.register(sequelize,config)
+})
+```
+
+
 
 #### If you create your Fastify project manually
 
 ```js
-// app.js
-
+// app.js CJS
 const fastify = require('fastify')
 const config = require('./config/config.json')
 
@@ -60,6 +78,7 @@ fastify
 // ...
 // .listen( ... )
 ```
+
 
 ## Usage
 
@@ -74,6 +93,6 @@ it's generated manually, or by using `sequelize-cli` package. Neat!
 ## Issues
 
 If there are bugs appeared when using this plugin, feel free to create
-[a new issue](https://github.com/easterneas/fastify-sequelize/issues).
+[a new issue](https://github.com/ysterbal/fastify-sequelize/issues).
 But remember to always add logs and the version of the plugin before posting
 issues here, and thank you for letting me know about the issues!
